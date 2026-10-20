@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mon Serveur Discord</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div id="admin-bar" class="admin-bar hidden">
+    <span>🔑 Mode admin activé</span>
+    <div>
+      <button id="edit-toggle">✏️ Éditer</button>
+      <button id="logout-btn">Se déconnecter</button>
+    </div>
+  </div>
+
+  <div id="login-bar" class="login-bar hidden">
+    <button id="login-btn">💬 Se connecter avec Discord</button>
+  </div>
+
+  <section class="hero">
+    <img id="logo" class="logo" src="" alt="Logo serveur">
+    <h1 id="server-name"></h1>
+    <p id="description"></p>
+    <a id="join-btn" class="join-btn" href="#" target="_blank">💬 Rejoindre le Discord</a>
+    <div id="stats" class="stats"></div>
+  </section>
+
+  <section class="section">
+    <h2>🧭 Ce qu'on fait ici</h2>
+    <div id="features" class="grid"></div>
+  </section>
+
+  <section class="section">
+    <h2>📜 Règles principales</h2>
+    <div id="rules" class="rules"></div>
+  </section>
+
+  <footer>Fait avec ❤️</footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
