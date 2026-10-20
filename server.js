@@ -126,7 +126,14 @@ app.put("/api/content", (req, res) => {
   res.json({ ok: true });
 });
 
-const port = PORT || 3000;
-app.listen(port, () => {
-  console.log(`✅ Serveur lancé sur http://localhost:${port}`);
-});
+// En local (ton ordi), on démarre un vrai serveur qui écoute un port.
+// Sur Vercel, ce fichier est utilisé comme fonction serverless : pas besoin
+// d'écouter un port, Vercel s'en charge, donc on exporte juste "app".
+if (require.main === module) {
+  const port = PORT || 3000;
+  app.listen(port, () => {
+    console.log(`✅ Serveur lancé sur http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
