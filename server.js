@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const session = require("express-session");
+const cookieSession = require("cookie-session");
 const fs = require("fs");
 const path = require("path");
 
@@ -20,18 +20,17 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+// cookie-session stocke les infos de connexion directement dans un cookie
+// signé chez le visiteur, plutôt qu'en mémoire côté serveur : ça marche de
+// façon fiable sur Vercel (serverless), contrairement à express-session.
 app.use(
-  session({
-    secret: SESSION_SECRET || "dev-secret-change-me",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      sameSite: "lax",
-      // En prod derrière HTTPS (Vercel/Render), passe ceci à true
-      secure: false,
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 jours
-    },
+  cookieSession({
+    name: "session",
+    keys: [SESSION_SECRET || "dev-secret-change-me"],
+    httpOnly: true,
+    sameSite: "lax",
+    secure: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 jours
   })
 );
 
@@ -92,7 +91,8 @@ app.get("/auth/callback", async (req, res) => {
 });
 
 app.post("/auth/logout", (req, res) => {
-  req.session.destroy(() => res.json({ ok: true }));
+  req.session = null; // efface le cookie de session
+  res.json({ ok: true });
 });
 
 // ---------- API ----------
