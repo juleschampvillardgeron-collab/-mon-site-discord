@@ -1,0 +1,22 @@
+{
+  "serverName": "Nom du Serveur",
+  "description": "Une petite description de ton serveur : son thème, son ambiance, ce qu'on y trouve.",
+  "logoUrl": "https://placehold.co/88x88/5865F2/white?text=%F0%9F%8E%AE",
+  "stats": [
+    { "label": "Membres", "value": "1 200" },
+    { "label": "En ligne", "value": "340" },
+    { "label": "Salons", "value": "12" }
+  ],
+  "features": [
+    { "emoji": "🎮", "title": "Gaming", "text": "Sessions de jeu, tournois, team-up." },
+    { "emoji": "🎨", "title": "Créatif", "text": "Partage tes créations, dessins, montages." },
+    { "emoji": "💬", "title": "Discussion", "text": "Salons de chat libre, memes, actu." },
+    { "emoji": "🎧", "title": "Vocaux", "text": "Salons vocaux ouverts 24/7." }
+  ],
+  "rules": [
+    "Respecte tout le monde, pas d'insultes ni de harcèlement.",
+    "Pas de spam ni de pub non autorisée.",
+    "Contenu NSFW interdit.",
+    "Utilise les bons salons pour les bons sujets."
+  ]
+}
